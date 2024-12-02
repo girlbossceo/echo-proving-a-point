@@ -1,7 +1,7 @@
 maubot: 0.1.0
-id: xyz.maubot.echo
-version: 1.4.0
+id: 3.dog.echo-proving-a-point
+version: 0.6.9
 license: MIT
 modules:
 - echo
-main_class: EchoBot
+main_class: EchoBotProvingAPoint

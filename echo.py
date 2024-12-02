@@ -1,5 +1,7 @@
 from typing import Optional
 from time import time
+from time import sleep
+from random import uniform
 from html import escape
 
 from mautrix.types import TextMessageEventContent, MessageType, Format, RelatesTo, RelationType
@@ -8,7 +10,7 @@ from maubot import Plugin, MessageEvent
 from maubot.handlers import command
 
 
-class EchoBot(Plugin):
+class EchoBotProvingAPoint(Plugin):
     @staticmethod
     def plural(num: float, unit: str, decimals: Optional[int] = None) -> str:
         num = round(num, decimals)
@@ -37,6 +39,8 @@ class EchoBot(Plugin):
     @command.new("ping", help="Ping")
     @command.argument("message", pass_raw=True, required=False)
     async def ping_handler(self, evt: MessageEvent, message: str = "") -> None:
+        # sleep a random amount of time to intentionally inflate everyone's scores
+        sleep(uniform(42.0, 169.0))
         diff = int(time() * 1000) - evt.timestamp
         pretty_diff = self.prettify_diff(diff)
         text_message = f'"{message[:20]}" took' if message else "took"
